@@ -1,0 +1,14 @@
+package com.jinli.mykotlin.http
+
+import com.jinli.mykotlin.model.response.LoginResponse
+import io.reactivex.Observable
+import retrofit2.http.POST
+
+/**
+ * Created by Jin on 10/15/2018
+ */
+interface HttpInterface {
+
+    @POST("login")
+    fun login(): Observable<LoginResponse>
+}
