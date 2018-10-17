@@ -33,8 +33,10 @@ class LoginViewModel (val ctx: Application) : BaseViewModel(ctx){
                                 loadingMessage.value = false
                                 if (rsp.message != null) {
                                     toastStringMessage.postValue(rsp.message)
-                                } else
+                                } else{
                                     userInfo.value = rsp.data
+                                }
+
                             }
 
                             override fun onError(e: Throwable) {
@@ -49,6 +51,8 @@ class LoginViewModel (val ctx: Application) : BaseViewModel(ctx){
                         }
 
                 )
+
+
     }
 
     override fun onCleared() {

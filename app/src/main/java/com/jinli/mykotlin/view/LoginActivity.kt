@@ -4,9 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.jinli.mykotlin.R
 import com.jinli.mykotlin.application.App
 import com.jinli.mykotlin.ext.enable
@@ -21,11 +19,13 @@ import org.jetbrains.anko.toast
  */
 class LoginActivity : BaseActivity(), View.OnClickListener {
 
+    private val mLinearLayout: LinearLayout by bindView(R.id.linearLayout)
     private val mLoginBtn: Button by bindView(R.id.btn_login)
     private val mMobileEt: EditText by bindView(R.id.et_mobile)
     private val mPwdEt: EditText by bindView(R.id.et_pwd)
     private val mHeaderBar: HeaderBar by bindView(R.id.header)
     private val mForgetPwdTv: TextView by bindView(R.id.tv_forget_pwd)
+    private val mProgressBar: ProgressBar by bindView(R.id.progress_bar)
 
     private val mLoginViewModel: LoginViewModel by lazy {
         ViewModelProviders.of(this)
@@ -36,29 +36,36 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initView()
+        initData()
     }
 
     private fun initView() {
         mLoginBtn.enable(mMobileEt, { isBtnEnable() })
         mLoginBtn.enable(mPwdEt, { isBtnEnable() })
-
         mLoginBtn.onClick(this)
         mHeaderBar.getRightView().onClick(this)
         mForgetPwdTv.onClick(this)
+    }
 
+    fun initData() {
         mLoginViewModel.toastStringMessage.observe(this, Observer {
+            //报错信息
             it?.let {
-                toast(App.Instance.getString(R.string.retry))
+                mProgressBar.visibility = View.GONE
+                snack(mLinearLayout, it, R.string.retry, View.OnClickListener {
+                    //重试事件
+                })
             }
         })
         //监听加载状态
         mLoginViewModel.loadingMessage.observe(this, Observer {
-            toast(App.Instance.getString(R.string.loading))
+            if (it == true)
+                mProgressBar.visibility = View.VISIBLE
         })
         mLoginViewModel.userInfo.observe(this, Observer { userInfo ->
-            if (userInfo != null) {
-                toast(App.Instance.getString(R.string.login_success))
-            }
+            //保存用户信息，并跳转界面
+            mProgressBar.visibility = View.GONE
+            toast(App.Instance.getString(R.string.login_success))
         })
     }
 
@@ -67,7 +74,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
      */
     override fun onClick(view: View) {
         when (view.id) {
-
             R.id.btn_login -> {
                 mLoginViewModel.login()
             }
