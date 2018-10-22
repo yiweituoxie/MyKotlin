@@ -1,6 +1,7 @@
 package com.jinli.mykotlin.http
 
 import com.jinli.mykotlin.model.response.LoginResponse
+import com.jinli.mykotlin.model.response.ModelResponse
 import io.reactivex.Observable
 import retrofit2.http.POST
 
@@ -11,4 +12,6 @@ interface HttpInterface {
 
     @POST("login")
     fun login(): Observable<LoginResponse>
+    @POST("modelList")
+    fun modelList(): Observable<ModelResponse>
 }

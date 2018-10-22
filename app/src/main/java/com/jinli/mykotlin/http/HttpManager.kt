@@ -1,6 +1,7 @@
 package com.jinli.mykotlin.http
 
 import com.jinli.mykotlin.model.response.LoginResponse
+import com.jinli.mykotlin.model.response.ModelResponse
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -26,7 +27,7 @@ object HttpManager {
                     .client(getMockClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl("https://easy-mock.com/mock/5b90c4a3c5ecb256d33e4bc9/ljj/mock/")
+                    .baseUrl("http://yapi.demo.qunar.com/mock/23756/")
                     .build()
                     .create(HttpInterface::class.java)
         get() {
@@ -34,4 +35,6 @@ object HttpManager {
         }
 
     fun login(): Observable<LoginResponse> = serviceMock.login()
+
+    fun modelList(): Observable<ModelResponse> = serviceMock.modelList()
 }

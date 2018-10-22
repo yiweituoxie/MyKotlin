@@ -8,6 +8,5 @@ data class UserInfo(
         val userIcon: String,
         val userName: String,
         val userGender: String,
-        val userMobile: String,
-        val userSign: String
+        val userMobile: String
 )

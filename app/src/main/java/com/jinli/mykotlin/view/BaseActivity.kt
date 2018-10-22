@@ -32,4 +32,10 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         mSnackBar?.show()
     }
+
+    fun dismissSnack() {
+        if (mSnackBar?.isShown == true) {
+            mSnackBar?.dismiss()
+        }
+    }
 }

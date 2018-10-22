@@ -39,4 +39,5 @@ ext {
     supportVersion = '27.1.1'
     anko_version='0.10.4'
     architectureVersion = '1.1.1'
+    glide_version = "3.7.0"
 }
