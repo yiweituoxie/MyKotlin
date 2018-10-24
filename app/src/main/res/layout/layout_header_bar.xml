@@ -7,7 +7,7 @@
                android:paddingLeft="@dimen/common_padding"
                android:paddingRight="@dimen/common_padding"
                style="@style/WrapMatch"
-               android:src="@mipmap/icon_back"/>
+               android:src="@drawable/icon_back"/>
     <TextView
             android:id="@+id/mTitleTv"
             android:textSize="@dimen/text_large_size"

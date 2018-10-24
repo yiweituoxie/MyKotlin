@@ -53,5 +53,6 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
     implementation 'com.alibaba:fastjson:1.1.61.android'
     implementation "android.arch.lifecycle:extensions:$rootProject.architectureVersion"
-    api "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 }

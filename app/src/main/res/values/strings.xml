@@ -3,4 +3,6 @@
     <string name="retry">请重试</string>
     <string name="loading">正在加载,抱歉没有等待框，将就着吧</string>
     <string name="login_success">登录成功</string>
+    <string name="tab1">选项1</string>
+    <string name="tab2">选项2</string>
 </resources>

@@ -28,6 +28,7 @@ object HttpManager {
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .baseUrl("http://yapi.demo.qunar.com/mock/23756/")
+//                    .baseUrl(" https://easy-mock.com/mock/5b90c4a3c5ecb256d33e4bc9/ljj/mock/")
                     .build()
                     .create(HttpInterface::class.java)
         get() {
